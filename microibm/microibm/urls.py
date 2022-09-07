@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('communicate_to_db.urls'))
+    path('', include('communicate_to_db.urls'), name='main')
 ]
