@@ -13,6 +13,9 @@ from . import models
 class GuestConnector(View):
     def post(self, request: WSGIRequest, *args, **kwargs):
         data = json.loads(request.body)
+        if not data.get('name') or not data.get('comment'):
+            return HttpResponse('No comment or name', status=400)
+
         models.Responces(name=data.get('name'), email=data.get('email', ''),
                          comment=data.get('comment'), createdAt=data.get('createdAt', datetime.datetime.now())).save()
         print(data)
