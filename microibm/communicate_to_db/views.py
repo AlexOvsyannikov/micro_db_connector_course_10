@@ -12,7 +12,7 @@ from . import models
 # Create your views here.
 class GuestConnector(View):
     def post(self, request: WSGIRequest, *args, **kwargs):
-        data = json.loads(request.body)
+        data = json.loads(request.body).get('doc', {})
         if not data.get('name') or not data.get('comment'):
             return HttpResponse('No comment or name', status=400)
 
