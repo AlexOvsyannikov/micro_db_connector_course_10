@@ -22,4 +22,5 @@ class GuestConnector(View):
         return HttpResponse(data)
 
     def get(self, request, *args, **kwargs):
-        return HttpResponse('12')
+        data = {"doc": [i for i in models.Responces.objects.all().values()]}
+        return HttpResponse(json.dumps(data, default=str), content_type="application/json")
