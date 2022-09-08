@@ -1,3 +1,3 @@
-release: python manage.py makemigrations
-release: python manage.py migrate
+release: python3 microibm/manage.py makemigrations
+release: python3 microibm/manage.py migrate
 web: gunicorn microibm.wsgi
